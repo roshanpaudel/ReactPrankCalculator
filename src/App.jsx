@@ -8,25 +8,24 @@ const App = () => {
         <div className="display arbutus-regular">0.0</div>
         {/* <div className="btn btn-ac">AC</div> */}
         <Button cls="btn-ac" label="AC" />
-        {/* <Button cls="btn-c" label="C"/> */}
-        {/* <div className="btn btn-c">C</div> */}
-        <div className="btn btn-per">%</div>
-        <div className="btn btn-divide">/</div>
-        <div className="btn btn-7">7</div>
-        <div className="btn btn-8">8</div>
-        <div className="btn btn-9">9</div>
-        <div className="btn btn-x">*</div>
-        <div className="btn btn-4">4</div>
-        <div className="btn btn-5">5</div>
-        <div className="btn btn-6">6</div>
-        <div className="btn btn-minus">-</div>
-        <div className="btn btn-1">1</div>
-        <div className="btn btn-2">2</div>
-        <div className="btn btn-3">3</div>
-        <div className="btn btn-plus">+</div>
-        <div className="btn btn-0">0</div>
-        <div className="btn btn-dot">.</div>
-        <div className="btn btn-equal">=</div>
+        <Button cls="btn-c" label="C" />
+        <Button cls="btn-per" label="%" />
+        <Button cls="btn-divide" label="/" />
+        <Button cls="btn-7" label="7" />
+        <Button cls="btn-8" label="8" />
+        <Button cls="btn-9" label="9" />
+        <Button cls="btn-x" label="x" />
+        <Button cls="btn-4" label="4" />
+        <Button cls="btn-5" label="5" />
+        <Button cls="btn-6" label="6" />
+        <Button cls="btn-minus" label="-" />
+        <Button cls="btn-1" label="1" />
+        <Button cls="btn-2" label="2" />
+        <Button cls="btn-3" label="3" />
+        <Button cls="btn-plus" label="+" />
+        <Button cls="btn-0" label="0" />
+        <Button cls="btn-dot" label="." />
+        <Button cls="btn-equal" label="=" />
       </div>
     </div>
   );
