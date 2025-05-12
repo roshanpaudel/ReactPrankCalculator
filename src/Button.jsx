@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Button = () => {
-  return <div className="btn btn-ac">AC</div>;
+export const Button = ({ cls, label }) => {
+  return <div className={"btn " + cls}>{label}</div>;
 };

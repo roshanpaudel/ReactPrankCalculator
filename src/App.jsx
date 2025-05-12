@@ -1,4 +1,5 @@
 import "./App.css";
+import { Button } from "./Button";
 
 const App = () => {
   return (
@@ -6,8 +7,9 @@ const App = () => {
       <div className="calculator">
         <div className="display arbutus-regular">0.0</div>
         {/* <div className="btn btn-ac">AC</div> */}
-        
-        <div className="btn btn-c">C</div>
+        <Button cls="btn-ac" label="AC" />
+        {/* <Button cls="btn-c" label="C"/> */}
+        {/* <div className="btn btn-c">C</div> */}
         <div className="btn btn-per">%</div>
         <div className="btn btn-divide">/</div>
         <div className="btn btn-7">7</div>
