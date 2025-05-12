@@ -5,7 +5,8 @@ const App = () => {
     <div className="wrapper flex-center">
       <div className="calculator">
         <div className="display arbutus-regular">0.0</div>
-        <div className="btn btn-ac">AC</div>
+        {/* <div className="btn btn-ac">AC</div> */}
+        
         <div className="btn btn-c">C</div>
         <div className="btn btn-per">%</div>
         <div className="btn btn-divide">/</div>
