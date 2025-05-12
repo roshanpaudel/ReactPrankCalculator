@@ -87,7 +87,7 @@ const App = () => {
         <div className="display arbutus-regular">0.0</div>
 
         {btns.map((btns, i) => (
-          <Button key={i} cls={btns.cls} label={btns.label} />
+          <Button key={i} {...btns} />
         ))}
       </div>
     </div>
