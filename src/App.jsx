@@ -40,7 +40,8 @@ const App = () => {
       const lastChar = strToDisplay[strToDisplay.length - 1];
 
       if (operators.includes(lastChar)) {
-        setStrToDisplay(strToDisplay.slice(0, -1));
+        setStrToDisplay(strToDisplay.slice(0, -1) + value);
+        return;
       }
     }
 
@@ -115,7 +116,7 @@ const App = () => {
     },
     {
       cls: "btn-x",
-      label: "x",
+      label: "*",
     },
     {
       cls: "btn-4",
