@@ -8,7 +8,7 @@ const App = () => {
   const [lastOperator, setLastOperator] = useState("");
 
   const buttonAction = (value) => {
-    displayElm.classList.remove("prank");
+    // displayElm.classList.remove("prank");
 
     if (value === "AC") {
       setStrToDisplay("");
@@ -65,15 +65,17 @@ const App = () => {
   // calculate total
   const displayTotal = () => {
     const extraValue = randomValue();
-    if (extraValue) {
-      displayElm.classList.add("prank");
-      audio.play();
-    }
+    // if (extraValue) {
+    //   displayElm.classList.add("prank");
+    //   audio.play();
+    // }
 
     const total = eval(strToDisplay) + extraValue;
-
-    strToDisplay = total.toString();
-    display(strToDisplay);
+    setStrToDisplay(total.toString());
+  };
+  const randomValue = () => {
+    const num = Math.round(Math.random() * 10); // 0 - 10
+    return num < 4 ? num : 0;
   };
 
   const handleOnClick = (value) => {
