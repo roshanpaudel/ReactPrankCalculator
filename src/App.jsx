@@ -1,28 +1,33 @@
+import { useState } from "react";
 import "./App.css";
 import { Button } from "./Button";
 
+const operators = ["%", "/", "*", "-", "+"];
 const App = () => {
+  const [strToDisplay, setStrToDisplay] = useState("");
+  const [lastOperator, setLastOperator] = useState("");
+
   const buttonAction = (value) => {
     displayElm.classList.remove("prank");
 
     if (value === "AC") {
-      strToDisplay = "";
-      return display(strToDisplay);
+      setStrToDisplay("");
+      return;
     }
 
     if (value === "C") {
-      strToDisplay = strToDisplay.slice(0, -1);
-      return display(strToDisplay);
+      setStrToDisplay(strToDisplay.slice(0, -1));
+      return;
     }
 
     if (value === "=" || value === "Enter") {
-      lastOperator = "";
+      setLastOperator("");
       //get the last char
       const lastChar = strToDisplay[strToDisplay.length - 1];
 
       // check if it is one of the operators
       if (operators.includes(lastChar)) {
-        strToDisplay = strToDisplay.slice(0, -1);
+        setStrToDisplay(strToDisplay.slice(0, -1));
       }
 
       return displayTotal();
@@ -30,12 +35,12 @@ const App = () => {
 
     // show only last clicked operator
     if (operators.includes(value)) {
-      lastOperator = value;
+      setLastOperator(value);
       //get the last char
       const lastChar = strToDisplay[strToDisplay.length - 1];
 
       if (operators.includes(lastChar)) {
-        strToDisplay = strToDisplay.slice(0, -1);
+        setStrToDisplay(strToDisplay.slice(0, -1));
       }
     }
 
@@ -55,13 +60,25 @@ const App = () => {
       }
     }
 
-    strToDisplay += value;
+    setStrToDisplay(strToDisplay + value);
+  };
+  // calculate total
+  const displayTotal = () => {
+    const extraValue = randomValue();
+    if (extraValue) {
+      displayElm.classList.add("prank");
+      audio.play();
+    }
 
+    const total = eval(strToDisplay) + extraValue;
+
+    strToDisplay = total.toString();
     display(strToDisplay);
   };
+
   const handleOnClick = (value) => {
     console.log(value);
-    buttonAction();
+    buttonAction(value);
   };
 
   const btns = [
@@ -146,7 +163,7 @@ const App = () => {
   return (
     <div className="wrapper flex-center">
       <div className="calculator">
-        <div className="display arbutus-regular">0.0</div>
+        <div className="display arbutus-regular">{strToDisplay || "0.00"}</div>
 
         {btns.map((btns, i) => (
           <Button key={i} {...btns} handleOnClick={handleOnClick} />
