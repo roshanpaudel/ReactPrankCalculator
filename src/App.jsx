@@ -91,7 +91,7 @@ const App = () => {
         <div className="display arbutus-regular">0.0</div>
 
         {btns.map((btns, i) => (
-          <Button key={i} {...btns} handleOnCLick={handleOnClick} />
+          <Button key={i} {...btns} handleOnClick={handleOnClick} />
         ))}
       </div>
     </div>
