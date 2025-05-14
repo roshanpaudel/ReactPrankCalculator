@@ -2,6 +2,10 @@ import "./App.css";
 import { Button } from "./Button";
 
 const App = () => {
+  const handleOnClick = (value) => {
+    console.log(value);
+  };
+
   const btns = [
     {
       cls: "btn-ac",
@@ -87,7 +91,7 @@ const App = () => {
         <div className="display arbutus-regular">0.0</div>
 
         {btns.map((btns, i) => (
-          <Button key={i} {...btns} />
+          <Button key={i} {...btns} handleOnCLick={handleOnClick} />
         ))}
       </div>
     </div>
