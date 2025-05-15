@@ -1,15 +1,36 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Button } from "./Button";
+import aa from "./assets/aa.wav";
 
+const audio = new Audio(aa);
 const operators = ["%", "/", "*", "-", "+"];
 const App = () => {
   const [strToDisplay, setStrToDisplay] = useState("");
   const [lastOperator, setLastOperator] = useState("");
   const [isMouseDown, setIsMouseDown] = useState();
+  const [isPrank, setIsPrank] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const value = e.key;
+      console.log("keydown event", e.key, "repeat?", e.repeat);
+      // Ignore keys you don't want
+      if (e.code.includes("Key")) return; // ignore letters
+      if (e.repeat) return; // IGNORE repeated events when key is held down
+
+      buttonAction(value);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const buttonAction = (value) => {
-    // displayElm.classList.remove("prank");
+    isPrank && setIsPrank(false);
 
     if (value === "AC") {
       setStrToDisplay("");
@@ -17,60 +38,50 @@ const App = () => {
     }
 
     if (value === "C") {
-      setStrToDisplay(strToDisplay.slice(0, -1));
+      setStrToDisplay((prev) => prev.slice(0, -1));
       return;
     }
 
     if (value === "=" || value === "Enter") {
       setLastOperator("");
-      //get the last char
       const lastChar = strToDisplay[strToDisplay.length - 1];
-
-      // check if it is one of the operators
       if (operators.includes(lastChar)) {
-        setStrToDisplay(strToDisplay.slice(0, -1));
+        setStrToDisplay((prev) => prev.slice(0, -1));
       }
-
       return displayTotal();
     }
 
-    // show only last clicked operator
     if (operators.includes(value)) {
       setLastOperator(value);
-      //get the last char
       const lastChar = strToDisplay[strToDisplay.length - 1];
-
       if (operators.includes(lastChar)) {
-        setStrToDisplay(strToDisplay.slice(0, -1) + value);
+        setStrToDisplay((prev) => prev.slice(0, -1) + value);
         return;
       }
     }
-
-    //handle the dot click
 
     if (value === ".") {
       const lastOperatorIndex = strToDisplay.lastIndexOf(lastOperator);
-
-      const lastNumebrSet = strToDisplay.slice(lastOperatorIndex);
-
-      if (lastNumebrSet.includes(".")) {
-        return;
-      }
-
-      if (!lastOperator && strToDisplay.includes(".")) {
+      const lastNumberSet = strToDisplay.slice(lastOperatorIndex);
+      if (
+        lastNumberSet.includes(".") ||
+        (!lastOperator && strToDisplay.includes("."))
+      ) {
         return;
       }
     }
 
-    setStrToDisplay(strToDisplay + value);
+    // ✅ FIXED: Use functional update to avoid stale state issues
+    setStrToDisplay((prev) => prev + value);
   };
+
   // calculate total
   const displayTotal = () => {
     const extraValue = randomValue();
-    // if (extraValue) {
-    //   displayElm.classList.add("prank");
-    //   audio.play();
-    // }
+    if (extraValue) {
+      setIsPrank(true);
+      audio.play();
+    }
 
     const total = eval(strToDisplay) + extraValue;
     setStrToDisplay(total.toString());
@@ -171,7 +182,15 @@ const App = () => {
   return (
     <div className="wrapper flex-center">
       <div className="calculator">
-        <div className="display arbutus-regular">{strToDisplay || "0.00"}</div>
+        <div
+          className={
+            isPrank
+              ? "display arbutus-regular prank"
+              : "display arbutus-regular"
+          }
+        >
+          {strToDisplay || "0.00"}
+        </div>
 
         {btns.map((btns, i) => (
           <Button
