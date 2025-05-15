@@ -6,6 +6,7 @@ const operators = ["%", "/", "*", "-", "+"];
 const App = () => {
   const [strToDisplay, setStrToDisplay] = useState("");
   const [lastOperator, setLastOperator] = useState("");
+  const [isMouseDown, setIsMouseDown] = useState();
 
   const buttonAction = (value) => {
     // displayElm.classList.remove("prank");
@@ -80,10 +81,17 @@ const App = () => {
   };
 
   const handleOnClick = (value) => {
-    console.log(value);
+    setIsMouseDown();
     buttonAction(value);
   };
-
+  const handleOnMouseDown = (value) => {
+    setIsMouseDown(value);
+    console.log(value);
+  };
+  const btnStyle = {
+    transform: isMouseDown ? "scale(0.9)" : "scale(1)",
+    transition: "transform 0.2s",
+  };
   const btns = [
     {
       cls: "btn-ac",
@@ -169,7 +177,14 @@ const App = () => {
         <div className="display arbutus-regular">{strToDisplay || "0.00"}</div>
 
         {btns.map((btns, i) => (
-          <Button key={i} {...btns} handleOnClick={handleOnClick} />
+          <Button
+            key={i}
+            {...btns}
+            handleOnClick={handleOnClick}
+            handleOnMouseDown={handleOnMouseDown}
+            btnStyle={btnStyle}
+            isMouseDown={isMouseDown}
+          />
         ))}
       </div>
     </div>
