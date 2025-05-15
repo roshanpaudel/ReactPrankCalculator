@@ -88,10 +88,7 @@ const App = () => {
     setIsMouseDown(value);
     console.log(value);
   };
-  const btnStyle = {
-    transform: isMouseDown ? "scale(0.9)" : "scale(1)",
-    transition: "transform 0.2s",
-  };
+
   const btns = [
     {
       cls: "btn-ac",
@@ -182,7 +179,6 @@ const App = () => {
             {...btns}
             handleOnClick={handleOnClick}
             handleOnMouseDown={handleOnMouseDown}
-            btnStyle={btnStyle}
             isMouseDown={isMouseDown}
           />
         ))}

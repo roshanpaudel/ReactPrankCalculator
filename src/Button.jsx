@@ -5,12 +5,18 @@ export const Button = ({
   label,
   handleOnClick,
   handleOnMouseDown,
-  btnStyle,
   isMouseDown,
 }) => {
   return (
     <div
-      style={isMouseDown === label ? btnStyle : null}
+      style={
+        isMouseDown === label
+          ? {
+              transform: isMouseDown ? "scale(0.9)" : "scale(1)",
+              transition: "transform 0.2s",
+            }
+          : null
+      }
       onClick={() => handleOnClick(label)}
       onMouseDown={() => handleOnMouseDown(label)}
       className={"btn " + cls}
