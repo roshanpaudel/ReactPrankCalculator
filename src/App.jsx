@@ -14,7 +14,6 @@ const App = () => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       const value = e.key;
-      console.log("keydown event", e.key, "repeat?", e.repeat);
       // Ignore keys you don't want
       if (e.code.includes("Key")) return; // ignore letters
       if (e.repeat) return; // IGNORE repeated events when key is held down
@@ -97,7 +96,6 @@ const App = () => {
   };
   const handleOnMouseDown = (value) => {
     setIsMouseDown(value);
-    console.log(value);
   };
 
   const btns = [
