@@ -1,46 +1,51 @@
-# React + Vite
+# 🧠 Habit Tracker App (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-# 🧠 Not to do list (React)
-
-A simple and intuitive **Habit Tracker** web application built with **React**. It helps users manage their daily tasks, track time allocation, and monitor habits they want to reduce.
+A responsive and beginner-friendly **Habit Tracker** web app built with **React** and **Vite**. This application allows users to manage their daily tasks and habits, helping them visualize how they allocate their time and where they can make improvements.
 
 ---
 
-## 📌 Features
+## ✨ Features
 
-- **Add New Task:** Quickly input tasks with names and estimated hours.
-- **Task List:** View all added tasks with their allocated hours.
-- **Habit List:** Identify and move tasks you'd like to reduce into a separate "Habits" list.
-- **Hour Tracking:** Automatically track total hours for tasks and habits separately.
-- **Task Management:** Move tasks between the task list and habit list or delete them as needed.
+- **✅ Add New Tasks**  
+  Input a task name and estimated hours to add a task to your active task list.
+
+- **📋 Task List View**  
+  See all added tasks with corresponding hours in an interactive list.
+
+- **🚫 Habit List**  
+  Move tasks you want to reduce (bad habits) into a separate "Habits to Reduce" list.
+
+- **🔁 Task-Habit Switching**  
+  Seamlessly switch tasks between the Task List and Habit List with one click.
+
+- **⏱ Time Tracking**  
+  Instantly view total hours spent on tasks and the potential time saved if habits were avoided.
+
+- **🗑 Task Deletion**  
+  Remove tasks from either list with confirmation to avoid accidental deletions.
+
+- **💡 Responsive UI**  
+  Mobile and desktop-friendly layout powered by Bootstrap and Font Awesome.
 
 ---
 
-## 🛠️ Technologies Used
+## ⚙️ Tech Stack
 
-- **React.js**
-- **HTML**
-- **CSS** (via Bootstrap)
-- **JavaScript (ES6+)**
-- **Font Awesome** (for icons)
+| Technology      | Purpose                         |
+|----------------|----------------------------------|
+| React (via Vite) | UI rendering and state management |
+| HTML & CSS      | Markup and styling               |
+| Bootstrap       | Responsive layout and components |
+| JavaScript (ES6+)| Application logic               |
+| Font Awesome    | Iconography                      |
+| Yarn            | Dependency management            |
 
 ---
 
-## 🚀 Setup Instructions
+## 🚀 Getting Started
 
-1. **Clone the repository:**
+### 🔄 Clone the Repository
 
-   ```bash
-   git clone https://github.com/your-username/habit-tracker-app.git
-   cd habit-tracker-app
+```bash
+git clone https://github.com/your-username/habit-tracker-app.git
+cd habit-tracker-app
